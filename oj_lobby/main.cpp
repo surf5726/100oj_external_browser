@@ -17,13 +17,13 @@ private:
 	STEAM_CALLBACK(LobbyBrowser, OnLobbyDataUpdate, LobbyDataUpdate_t, m_cbLobbyDataUpdate);
 };
 
-LobbyBrowser::LobbyBrowser()
+LobbyBrowser::LobbyBrowser(void)
 	: m_cbLobbyMatchList(this, &LobbyBrowser::OnLobbyMatchList),
 	m_cbLobbyDataUpdate(this, &LobbyBrowser::OnLobbyDataUpdate)
 {
 }
 
-void LobbyBrowser::Refresh() 
+void LobbyBrowser::Refresh(void) 
 {
 	SteamMatchmaking()->AddRequestLobbyListDistanceFilter(k_ELobbyDistanceFilterWorldwide);
 	SteamMatchmaking()->AddRequestLobbyListResultCountFilter(50);
@@ -120,7 +120,7 @@ void LobbyBrowser::OnLobbyDataUpdate(LobbyDataUpdate_t *p)
 	}
 }
 
-int main()
+int main(void)
 {
 	SetConsoleOutputCP(CP_UTF8);
 	SetConsoleCP(CP_UTF8);
