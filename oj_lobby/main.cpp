@@ -1,6 +1,4 @@
-﻿#include <string>
-#include <thread>
-#include <chrono>
+#include <stdio.h>
 #include <Windows.h>
 #include "steam_api.h"
 #pragma comment(lib, "steam_api64.lib")
@@ -28,7 +26,7 @@ void LobbyBrowser::Refresh(void)
 	SteamMatchmaking()->AddRequestLobbyListDistanceFilter(k_ELobbyDistanceFilterWorldwide);
 	SteamMatchmaking()->AddRequestLobbyListResultCountFilter(50);
 	SteamMatchmaking()->RequestLobbyList();
-	std::puts("[OJ] RequestLobbyList sent");
+	puts("[OJ] RequestLobbyList sent");
 }
 
 void LobbyBrowser::OnLobbyMatchList(LobbyMatchList_t *p) 
@@ -139,7 +137,7 @@ int main(void)
 	for (int i = 0; i < 300; i++)
 	{
 		SteamAPI_RunCallbacks();
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		Sleep(100);
 	}
 	SteamAPI_Shutdown();
 	getchar();
